@@ -1,0 +1,26 @@
+﻿({
+  "MENU":"菜单",
+  "Managepatient":"病人管理",
+  "Caculate":"计算", 
+  "Alarmsetting":"报警设置", 
+  "Systemsetting":"系统设置", 
+  "Systemtime":"系统时间", 
+  "Review":"回顾", 
+  "Historydata":"历史数据", 
+  "Osdsetting":"界面设置",  
+  "Maintain":"保养", 
+  "Recordsetting":"记录设置",  
+  "Analogoutputsetting":"模拟输出", 
+  "Printsetting":"打印设置",  
+  "Defaultsetting":"默认设置", 
+  "Eventsetting":"事件设置",  
+  "Icusysinfo":"ICU系统信息", 
+  "Orsinfo":"ORS系统信息", 
+  "Back":"返回", 
+
+  "There are # matches in the box" : function(n) {
+      return n == 0 ? "没有匹配" 
+            : n == 1 ? "方框内仅有一个匹配" 
+            : "方框内有 " + n + " 匹配";
+  }
+})

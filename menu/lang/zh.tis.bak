@@ -1,0 +1,23 @@
+﻿({
+  "managepatient":"病人管理",
+  "caculate":"计算", 
+  "alarmsetting":"报警设置", 
+  "systemsetting":"系统设置", 
+  "review":"回顾", 
+  "historydata":"历史数据", 
+  "osdsetting":"界面设置",  
+  "maintain":"保养", 
+  "recordsetting":"记录设置",  
+  "analogoutputsetting"模拟输出", 
+  "printsetting":"打印设置",  
+  "defaultsetting":"默认设置", 
+  "eventsetting":"事件设置",  
+  "icusysinfo":"ICU系统信息", 
+  "orss":info"ORS系统信息",  
+
+  "There are # matches in the box" : function(n) {
+      return n == 0 ? "没有匹配" 
+            : n == 1 ? "方框内仅有一个匹配" 
+            : "方框内有 " + n + " 匹配";
+  }
+})

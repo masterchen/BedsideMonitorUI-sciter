@@ -1,0 +1,190 @@
+<html custom-frame="layered" state="hidden" lang="zh">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <link href="lang/zh.tis" hreflang="zh" rel="translation" >
+  <link href="lang/en.tis" hreflang="en" rel="translation" >
+  <title>Glassy window</title>
+  <include src="font-awesome.inc.htm" />
+  <style>
+  @import url(lang/lang.css);
+    html 
+    { 
+      font:system;
+      background:transparent; 
+      overflow:hidden;
+      padding:0;
+    }
+    
+    body 
+    {
+      background-color:rgba(192,192,192,192);//rgba(0,0,0,0.7); 
+      background-clip: padding-box;
+      padding:8dip; margin:0;
+      border-left:1dip solid rgba(150,150,150,0.25); 
+      transform: translate(100%,0);
+    }
+    
+      html { background-color:#669999 ; overflow:none;}
+      
+      html > header { width:*; line-height:1.6em; flow:horizontal;  margin:3dip 3dip 0 3dip; }
+      html > header > caption { width:*; height:*; }
+      html > header > button { behavior:clickable; /*non-focusable button*/ }
+    
+      body { margin:0 3dip 3dip 3dip;
+        background-color:#cccccc; 
+        overflow:none; }
+
+
+    html[state="shown"] > body {
+      transform: translate(0%,0);
+      transition: transform(quad-out,200ms);
+      //background-color:gray;
+      
+    }
+    
+    frame#menu {
+      flow: grid(1  2  3  4,
+                 5  6  7  8,
+                 9  10 11 12,
+                 13 14 15);
+      border-spacing: 8dip;
+    }
+    
+    frame#menu > button { 
+      //display:block;
+      width:*; 
+      height: 50dip; 
+      background: #fcfcfc;
+      border-radius:5px 5px 5px 5px;
+      border-bottom:solid 1px lightgray;
+    }
+    frame#menu > button:hover { 
+      background-color:lightyellow;
+    }
+   
+    //h1 { color:#fff;}
+    
+  </style>
+  <script type="text/tiscript">
+        
+   self.ready = function() {
+      //view.msgbox(#alert,"test");
+      //self.attributes["state"] = "shown";
+      //$(frame#menu).load("menuhome.htm");
+      view.reveal();
+   }
+
+    function view.reveal() {
+      this.state = View.WINDOW_SHOWN;
+      //view.msgbox(#alert,"test");
+      self.attributes["state"] = "shown";
+    }
+  
+    self.on("click","#hide", function() {
+      view.isBlurBehind = false;
+      self.attributes["state"] = "hidden";
+    });
+
+    self.on("animationend", function() {
+      var state = self.attributes["state"];
+      if(state == "shown")
+        view.isBlurBehind = true;
+      else if(state == "hidden")
+      view.close();
+      //  view.state = View.WINDOW_HIDDEN;
+    });
+    
+    var nav_text = $(caption).value;
+    var currentsel;
+    var lastclickbutton = null;
+    event click $(frame#menu > button)
+    {
+        //stdout.printf("%V\n",this.value);
+       
+        this.style["background-color"] = "yellow";
+        $(caption).value = Lang.x(nav_text) +">>"+this.text;
+        var selblock = "frame"+"#"+ this.attributes["name"];
+      
+        if(lastclickbutton)
+        {
+           //view.msgbox(#alert,lastclickbutton);
+           self.select(lastclickbutton).style["background-color"] = "#fcfcfc";
+        }
+
+        lastclickbutton = "button#"+this.attributes["name"];
+        currentsel = selblock;
+      
+        //view.msgbox(#alert,selblock);
+        //$(frame#managepatient).style["display"] = "block";
+        self.select(selblock).style["display"] = "block";
+
+        $(frame#menu).style["display"] = "none";
+        /*
+        switch( this.attributes["name"]) {
+          case "managepatient" : 
+              var = 
+              $(frame#menu).style["display"] = "none";
+              $(frame#patient).style["display"] = "block";
+              //view.msgbox(#alert,$(h1).value);
+          break;
+          case "caculate" : 
+              view.msgbox(#alert,"caculate");
+          break;
+         default:
+           
+          break;
+          
+
+        }*/
+        
+    }
+    self.on("click","#return", function() {
+      //view.msgbox(#alert,"test");
+      $(caption).value = Lang.x(nav_text);
+      $(frame#menu).style["display"] = "block";
+      self.select(currentsel).style["display"] = "none";
+      self.select(lastclickbutton).style["background-color"] = "yellow";
+      self.refresh();
+    });
+
+    $(#close).on("click", function() {
+      view.parameters.state(0);
+    });
+    </script>
+</head>
+<header>
+  <caption role="window-caption"><dfn>MENU</dfn></caption>
+  <button id="close" role="window-close">X</button>
+</header>   
+<body> 
+ <!--<button #hide>&raquo;</button> -->
+  <!--<h1><dfn>MENU</dfn></h1>-->
+  <frame #menu value="1">
+    <button #managepatient name = "managepatient"><dfn>Managepatient</dfn></button>
+    <button #calculate name = "calculate"><dfn>Caculate</dfn></button>
+    <button #alarmsetting name = "alarmsetting"><dfn>Alarmsetting</dfn></button>
+    <button #systemtime name = "systemtime"><dfn>Systemtime</dfn></button>
+    <button #review name = "review"><dfn>Review</dfn></button>
+    <button #historydata name = "historydata"><dfn>Historydata</dfn></button>
+    <button #osdsetting name = "osdsetting"><dfn>Osdsetting</dfn></button>
+    <button #maintain name = "maintain"><dfn>Maintain</dfn></button>
+    <button #recordsetting name = "recordsetting"><dfn>Recordsetting</dfn></button>
+    <button #analogoutputsetting name = "analogoutputsetting"><dfn>Analogoutputsetting</dfn></button>
+    <button #printsetting name = "printsetting"><dfn>Printsetting</dfn></button>
+    <button #defaultsetting name = "defaultsetting"><dfn>Defaultsetting</dfn></button>
+    <button #eventsetting name = "eventsetting"><dfn>Eventsetting</dfn></button>
+    <button #icusysinfo name = "icusysinfo"><dfn>Icusysinfo</dfn></button>
+    <button #orsysinfo name = "orsysinfo"><dfn>Orsinfo</dfn></button>
+  </frame>
+    <frame#managepatient src="addpatient.html" style="display:none">
+    </frame>
+    <frame#calculate src="calculate.html" style="display:none">
+    </frame>
+
+    <div style="display:block;flow:horizontal;">
+    <button #confirm><dfn>Confirm</dfn></button>
+    <button #return><dfn>Back</dfn></button>
+    </div>
+  
+</body>
+</html>

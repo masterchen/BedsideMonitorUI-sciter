@@ -1,0 +1,22 @@
+﻿({
+
+  "Mute":"消除报警",
+  "TimeInter.":"时间间隔",
+  "NIBPStart":"N*开始",
+  "NewPatient":"新病人",
+  "AlarmR.":"报警回顾",
+  "BloodR.":"血压回顾",
+  "TrendG.":"趋势图",
+  "TrendT.":"趋势表",
+  "TrendMix":"趋势共存",
+  "HeartAb.":"心率失常",
+  "Menu":"菜单",
+
+
+
+  "There are # matches in the box" : function(n) {
+      return n == 0 ? "没有匹配" 
+            : n == 1 ? "方框内仅有一个匹配" 
+            : "方框内有 " + n + " 匹配";
+  }
+})

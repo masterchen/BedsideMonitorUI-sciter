@@ -1,0 +1,131 @@
+<html custom-frame="layered" state="hidden" lang="zh">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <link href="lang/zh.tis" hreflang="zh" rel="translation" >
+  <link href="lang/en.tis" hreflang="en" rel="translation" >
+  <title>Glassy window</title>
+  <include src="font-awesome.inc.htm" />
+  <style>
+  @import url(lang/lang.css);
+    html 
+    { 
+      font:system;
+      background:transparent; 
+      overflow:hidden;
+      padding:0;
+    }
+    
+    body 
+    {
+      background-color:rgba(192,192,192,192);//rgba(0,0,0,0.7); 
+      background-clip: padding-box;
+      padding:8dip; margin:0;
+      border-left:1dip solid rgba(150,150,150,0.25); 
+      transform: translate(100%,0);
+    }
+    
+    html[state="shown"] > body {
+      transform: translate(0%,0);
+      transition: transform(quad-out,200ms);
+      //background-color:gray;
+      
+    }
+    
+    frame#menu {
+      flow: grid(1  2  3  4,
+                 5  6  7  8,
+                 9  10 11 12,
+                 13 14 15);
+      border-spacing: 8dip;
+    }
+    
+    frame#menu > button { 
+      //display:block;
+      width:*; 
+      height: 50dip; 
+      background: #fcfcfc;
+      border-radius:5px 5px 5px 5px;
+      border-bottom:solid 1px lightgray;
+    }
+   
+    //h1 { color:#fff;}
+    
+  </style>
+  <script type="text/tiscript">
+        
+   self.ready = function() {
+      //view.msgbox(#alert,"test");
+      //self.attributes["state"] = "shown";
+      view.reveal();
+   }
+
+    function view.reveal() {
+      this.state = View.WINDOW_SHOWN;
+      //view.msgbox(#alert,"test");
+      self.attributes["state"] = "shown";
+    }
+  
+    self.on("click","#hide", function() {
+      view.isBlurBehind = false;
+      self.attributes["state"] = "hidden";
+    });
+
+    self.on("animationend", function() {
+      var state = self.attributes["state"];
+      if(state == "shown")
+        view.isBlurBehind = true;
+      else if(state == "hidden")
+      view.close();
+      //  view.state = View.WINDOW_HIDDEN;
+    });
+    
+    var nav_text = $(h1).value;
+    event click $(frame#menu > button)
+    {
+        //stdout.printf("%V\n",this.value);
+        //view.msgbox(#alert,this.text);
+
+        $(h1).value = Lang.x(nav_text) +">"+this.text;
+        switch( this.attributes["name"]) {
+          case "managepatient" : 
+              $(frame#menu).load("sidebar-window.htm");
+              //view.msgbox(#alert,$(h1).value);
+          break;
+          case "caculate" : 
+              view.msgbox(#alert,"caculate");
+          break;
+         default:
+           
+          break;
+
+        }
+        
+    }
+ 
+    
+    </script>
+</head>
+<body> 
+  <button #hide>&raquo;</button>
+  <h1><dfn>MENU</dfn></h1>
+  <frame #menu value="1">
+    <button name = "managepatient"><dfn>Managepatient</dfn></button>
+    <button name = "caculate"><dfn>Caculate</dfn></button>
+    <button name = "alarmsetting"><dfn>Alarmsetting</dfn></button>
+    <button name = "systemtime"><dfn>Systemtime</dfn></button>
+    <button name = "review"><dfn>Review</dfn></button>
+    <button name = "historydata"><dfn>Historydata</dfn></button>
+    <button name = "osdsetting"><dfn>Osdsetting</dfn></button>
+    <button name = "maintain"><dfn>Maintain</dfn></button>
+    <button name = "recordsetting"><dfn>Recordsetting</dfn></button>
+    <button name = "analogoutputsetting"><dfn>Analogoutputsetting</dfn></button>
+    <button name = "printsetting"><dfn>Printsetting</dfn></button>
+    <button name = "defaultsetting"><dfn>Defaultsetting</dfn></button>
+    <button name = "eventsetting"><dfn>Eventsetting</dfn></button>
+    <button name = "icusysinfo"><dfn>Icusysinfo</dfn></button>
+    <button name = "orsysinfo"><dfn>Orsinfo</dfn></button>
+  </frame>
+  
+  
+</body>
+</html>
