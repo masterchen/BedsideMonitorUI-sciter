@@ -1,0 +1,541 @@
+﻿<html window-frame = "solid-with-shadow" window-resizable lang="zh">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <link href="lang/zh.tis" hreflang="zh" rel="translation" >
+  <link href="lang/en.tis" hreflang="en" rel="translation" >
+
+
+    <title></title>
+    <style>
+    //lang for multilanguage
+    @import url(lang/lang.css);
+    //vgrid Here is for title bar
+    @import url(vgrid.css);
+    table { style-set: vgrid; 
+            width:*;
+            height:*;
+            overflow-x: hidden } 
+    //table th:nth-child(0) { width:8em; }
+    table th:nth-child(1) {
+      border-radius:5px 0 0 5px;
+     width:4em; }
+    table th:nth-child(2) { width:6em; }
+    table th:nth-child(3) { width:8em; }
+    table th:nth-child(4) { width:4em; }//asist
+    table th:nth-child(5) { width:10em; }
+    table th:nth-child(6) { width:*; }//padding
+    table th:nth-child(7) { 
+      width:15em; }//tech error
+    table th:nth-child(8) {
+     //color:lightyellow;
+     border-radius:0 5px 5px 0;
+     width:10em; } //health error
+
+    //table th:last-child { width:*; }
+
+
+    //for bottom bar
+    div.carousel {
+    
+      aspect: Carousel url(carousel.tis);
+    
+      flow:grid(1 1 1,
+                2 3 4 5 6 7 8 9);
+      width: max-content;
+      //width:*;
+
+      //filter: blur(5dip);//blur window
+      //border-radius:40px 0 0 40px;
+      //border: 1px solid black;
+    }
+            
+    div.carousel > .button { height:*; width: 33dip; behavior:button; foreground: url(image/arrow-previous.png) 50% 50% no-repeat; }
+    
+    div.carousel > .button.prev {
+      margin-left:5px;
+      size: 50dip 30dip;
+      foreground-image:url(image/arrow-previous.png); }
+    div.carousel > .button.next { 
+      size: 50dip 30dip;
+      foreground-image:url(image/arrow-next.png); }
+
+    
+    div.carousel > .button.prev:disabled,
+    div.carousel > .button.next:disabled { color:#ccc; }
+    
+    div.carousel > widget.list {
+    	//display:inline-block;
+    	//background-color:red;
+      flow:vertical-wrap;
+      horizontal-align:cetner;
+      size: 560dip 68dip;
+      overflow:hidden;
+      border-radius:5px 0 0 5px;
+    }
+    div.carousel > widget.list > div.box { 
+      behavior:button;
+      size: 75dip 68dip; //r如果太宽导致字符和图片在同一行
+
+      //outline:2px solid red -1px; 
+      margin-left:20px
+      background:gold; 
+    }
+   div.carousel > widget.padding {
+      display:block;
+      flow:horizontal;
+      overflow:hidden;
+      width:*;
+    }
+    div.carousel > widget.list1 {
+      flow:horizontal;
+      size: 75dip 68dip;
+      overflow:hidden;
+      margin-left:5px;
+      //padding-right:10px;
+    }
+    div.carousel > widget.list2 {
+      flow:horizontal;
+      size: 295dip 68dip;
+      overflow:hidden;
+      //margin-left:30px;
+      //padding-right:10px;
+    }
+    div.carousel > widget.list2 > div.box2 { 
+      behavior:button;
+      size: 68dip 68dip;
+      margin-left:5px;
+      //outline:2px solid red -1px; 
+      //background:gold; 
+    }
+/*
+    div.carousel > widget.list > div.box.home { 
+      //background-color:red;
+      background-repeat: no-repeat;
+      foreground-image:url(CSS3 Menu2.css3prj_files/css3menu2/home.png); }
+    div.carousel > widget.list > div.box.member { 
+      //background-color:red;
+      background-repeat: no-repeat;
+      foreground-image:url(member.png); }
+    div.carousel > widget.list > div.box.settings { 
+      //background-color:red;
+      foreground-image:url(settings.png); }
+    div.carousel > widget.list > div.box.help { 
+      //background-color:red;
+    foreground-image:url(help.png); }
+  */
+     div.carousel > widget.list1 > div.box a:active, div.carousel > widget.list1 > div.box a:focus{
+      //outline-style:none;
+      background-color:#f8ac00;border-color:#C0C0C0;border-style:solid;
+      color:#000000;text-shadow:#FFF 0 0 1px;background-image:url("image/mainbk.png");background-position:0 100px;
+    }
+    div.carousel > widget.list1 > div.box a{
+      display:block;
+      text-align:middle;text-decoration:none;font:bold 14px Trebuchet MS;color:#000000;text-shadow:#FFF 0 0 1px;
+      cursor:pointer;padding:10px;
+      background-color:#c1c1c1;background-image:url("image/mainbk.png");background-repeat:repeat;background-position:0 0;
+      border-width:0 0 0 1px;border-style:solid;border-color:#C0C0C0;
+      border-radius:10px 10px 10px 10px;
+    }
+
+    div.carousel > widget.list > div.box a:active, div.carousel > widget.list > div.box a:focus{
+      //outline-style:none;
+      background-color:#f8ac00;border-color:#C0C0C0;border-style:solid;
+      color:#000000;text-shadow:#FFF 0 0 1px;background-image:url("image/mainbk.png");background-position:0 100px;
+    }
+    div.carousel > widget.list > div.box a{
+      display:block;
+      text-align:middle;text-decoration:none;font:bold 14px Trebuchet MS;color:#000000;text-shadow:#FFF 0 0 1px;
+      cursor:pointer;padding:10px;
+      background-color:#c1c1c1;background-image:url("image/mainbk.png");background-repeat:repeat;background-position:0 0;
+      border-width:0 0 0 1px;border-style:solid;border-color:#C0C0C0;
+    }
+
+     div.carousel > widget.list2 > div.box2 a:active, div.carousel > widget.list2 > div.box2 a:focus{
+      //outline-style:none;
+      background-color:#f8ac00;border-color:#C0C0C0;border-style:solid;
+      color:#000000;text-shadow:#FFF 0 0 1px;background-image:url("image/mainbk.png");background-position:0 100px;
+    }
+    div.carousel > widget.list2 > div.box2 a{
+      display:block;
+      text-align:middle;text-decoration:none;font:bold 14px Trebuchet MS;color:#000000;text-shadow:#FFF 0 0 1px;
+      cursor:pointer;padding:10px;
+      background-color:#c1c1c1;background-image:url("image/mainbk.png");background-repeat:repeat;background-position:0 0;
+      border-width:0 0 0 1px;border-style:solid;border-color:#C0C0C0;
+      border-radius:10px 10px 10px 10px;
+    }
+    div.carousel > widget.list1 > div.box:hover>a,div.carousel > widget.list1 > div.box a.pressed{
+      background-color:#f8ac00;border-color:#C0C0C0;border-style:solid;color:#000000;text-shadow:#FFF 0 0 1px;background-image:url("image/mainbk.png");background-position:0 100px;}
+
+    div.carousel > widget.list > div.box:hover>a,div.carousel > widget.list > div.box a.pressed{
+      background-color:#f8ac00;border-color:#C0C0C0;border-style:solid;color:#000000;text-shadow:#FFF 0 0 1px;background-image:url("image/mainbk.png");background-position:0 100px;}
+   div.carousel > widget.list > div.box.home >a{
+  border-radius:5px 0 0 5px;-moz-border-radius:5px 0 0 5px;-webkit-border-radius:5px;-webkit-border-top-right-radius:0;-webkit-border-bottom-right-radius:0;}
+  div.carousel > widget.list > div.box.help >a{
+  border-radius:0 5px 5px 0;-moz-border-radius:0 5px 5px 0;-webkit-border-radius:0;-webkit-border-top-right-radius:5px;-webkit-border-bottom-right-radius:5px;}
+
+    div.carousel > widget.list1 > div.box img{
+      //margin:%%;
+      border:none;vertical-align:middle;margin-left:10px;}
+    div.carousel > widget.list > div.box img{
+      //margin:%%;
+      border:none;vertical-align:middle;margin-left:10px;}
+
+    div.carousel > widget.list2 > div.box2 img{
+      //margin:%%;
+      border:none;vertical-align:middle;margin-left:10px;}
+
+
+    div.carousel > widget.list > div.placeholder { outline:2px gray dashed -3px; background:none; overflow:hidden;  }
+    div.carousel > widget.list > div:moving { background-color:yellow;  size: 150dip 140dip;  }
+    
+    div.carousel > div.paging { flow:horizontal; horizontal-align: center; }
+    div.carousel > div.paging > span { display:block; width:max-content; }
+    div.carousel > div.paging > span:current { color:red; }
+   
+    ul#devstatus{
+      display:block;flow:horizontal;margin-top:0px;margin-left:10px;horizontal-align:right;
+    }
+    ul#devstatus>li{
+      display:block;width:max-content;margin-left:10px;
+    }
+
+
+
+      table>thead>tr>th>img.twinkle { 
+      aspect: Twinkle; /* see below */ }
+      
+      table>thead>tr>th>img.twinkle:expanded { transform: scale(0.5); transition: transform(sine-in-out, 600ms); }
+
+
+    </style>
+    <script type="text/tiscript">
+
+
+
+    function showTime()
+    {
+      //var val = this.$p( form ).value;
+      self.$(th#time).value = Date.now();//String.printf("%V",val);
+    }
+
+     self.timer(1s, function() { 
+       showTime();
+       return true;
+    });
+    /*
+    var barControlTimer = null;
+    $(body).onMouse = function(evt) {
+        switch (evt.type) {
+        case Event.MOUSE_UP:
+            //view.msgbox(#alert,"UPPPPPPPPP!");
+            //if(barControlTimer != null)
+            {
+                 barControlTimer = function() {
+                 $(frame#buttom).style["display"] = "none";
+                 $(ul#devstatus>li#top).style["display"] = "block";
+                 barControlTimer = null; // timer ended by itself
+                 return false;
+                } 
+              this.timer(5s, barControlTimer);
+            }
+          break;
+        case Event.MOUSE_DOWN:
+              //view.msgbox(#alert,"DDDDDDDown!");
+            if(barControlTimer)  
+             this.timer(0, barControlTimer); // stop the timer
+            break;
+        }
+    }
+
+    var activeTimer = null;
+    $(body).onMouse = function(evt) {
+        switch (evt.type) {
+        case Event.MOUSE_UP:
+            //view.msgbox(#alert,"UPPPPPPPPP!");
+            activeTimer = function() {
+                activeTimer = null; // timer ended by itself
+                $(frame#buttom).style["display"] = "none";
+                $(ul#devstatus>li#top).style["display"] = "block";
+                return false;
+            } 
+            this.timer(8000ms, activeTimer);
+        break;
+        case Event.MOUSE_DOWN:
+            if(activeTimer)  
+              this.timer(0, activeTimer); // stop the timer
+            break;
+        }
+    }
+    */
+
+    /*   OK 
+    var activeTimer = null;
+    $(body).onMouse = function(evt) {
+        switch (evt.type) {
+        case Event.MOUSE_UP:
+            view.msgbox(#alert,"UPPPPPPPPP!");
+            activeTimer = function() {
+                activeTimer = null; // timer ended by itself
+                $(frame#buttom).style["display"] = "none";
+                $(ul#devstatus>li#top).style["display"] = "block";
+                return false;
+            } 
+            this.timer(5s, activeTimer);
+        break;
+        case Event.MOUSE_DOWN:
+            //view.msgbox(#alert,"DDDDDDDown!");
+            if(activeTimer)  
+              this.timer(0, activeTimer); // stop the timer
+            break;
+        }
+    }
+    */
+    
+    var isButtomBarShown= 1;
+    var isDialogShown = 0 
+    var isUserActive = 0 
+
+    function hideButtomBar()
+    {
+       $(frame#buttom).style["display"] = "none";
+       $(ul#devstatus>li#top).style["display"] = "block";
+       return true;
+    }
+
+     self.timer(8s, function() { 
+      if(isButtomBarShown == 1 && isDialogShown == 0)
+      {
+       hideButtomBar();
+       isButtomBarShown = 0;
+       return true;
+      }
+       return true;
+    });
+    
+    event click $(ul#devstatus>li#top)
+    {
+       //view.msgbox(#alert,"Please input correct sample number!");
+       $(frame#buttom).style["display"] = "block";
+       $(ul#devstatus>li#top).style["display"] = "none";
+        isButtomBarShown = 1;
+    }
+    
+
+
+
+    function Twinkle() 
+    {
+      function flipflop() { this.state.expanded = !this.state.expanded; }
+    
+      this.start = function() {
+        this.state.expanded = true; // triggers transition/animation
+        this.on("animationend.twinkle", flipflop );
+      } 
+      
+      this.stop = function() {
+        this.state.expanded = false; 
+        this.off("animationend.twinkle");
+      } 
+     
+    }
+
+    function self.ready() { 
+      self.post(::$(#heart).start());
+      $(ul#devstatus>li#top).style["display"] = "none";
+    }
+
+    function updateDialogStatus(state)
+    {
+        //view.msgbox(#alert,"Close!");
+        isDialogShown = state;
+    }
+
+    !function() 
+    {
+        
+          var sidebar = null;    
+           //div.carousel > .button.next
+           //div.carousel > widget.list2 > div.box2.menu
+          $(div.carousel > widget.list2 > div.box2.menu > a).onClick = function() {
+            //view.msgbox
+            isButtomBarShown = 1;
+            isDialogShown = 1;
+
+          
+          function moveToScreenCenter() {  
+              var (screenWidth, screenHeight) = view.screenBox(#workarea, #dimension);  
+              var (windowWidth, windowHeight) = view.box(#dimension);  
+              view.move((screenWidth - windowWidth) / 2, (screenHeight - windowHeight) / 2, true);   
+          }  
+
+
+
+            var (screenX1,screenY1,screenX2,screenY2) = view.screenBox(#workarea,#rect);
+            /*
+            if( !sidebar )
+              sidebar = View.window // note .window() methods is called as a static method of View class here
+              {                   // and so the window will be created in detached mode - will stay on screen even its owner is closed 
+                type:View.POPUP_WINDOW,
+                url: self.url("menu/sidebar-window.htm"),
+                x:screenX2 - 500 + 1,
+                y:screenY1,
+                width : 100,
+                height : screenY2 - screenY1,
+                state: View.WINDOW_HIDDEN,
+                alignment:7,
+              };
+            */
+            /*
+            if( !sidebar )
+              sidebar = view.dialog // note .window() methods is called as a static method of View class here
+              {                   // and so the window will be created in detached mode - will stay on screen even its owner is closed 
+                //type:View.POPUP_WINDOW,
+                url: self.url("menu/sidebar-window.htm"),
+                x:screenX2 - 580,
+                y:screenY1+40,
+                width : 400,
+                height : screenY2 - screenY1-180,
+                //client:true;
+                //caption:"Menu";
+                //state: View.WINDOW_HIDDEN,
+                alignment:-9,
+                //screen:0;
+              };
+               */
+
+            var dialogParameters = {
+                state:updateDialogStatus,    // function to be passed to dialog
+                //type:View.POPUP_WINDOW,
+               
+                x:screenX2 - 900,
+                y:screenY1+200,
+                width : 450,
+                height : screenY2 - screenY1-380,
+                //client:true;
+                //caption:"Menu";
+                //state: View.WINDOW_HIDDEN,
+                alignment:-9,
+                //screen:0;
+            };
+            if( !sidebar )
+              sidebar = view.dialog // note .window() methods is called as a static method of View class here
+              {                   // and so the window will be created in detached mode - will stay on screen even its owner is closed 
+                url: self.url("menu/sidebar-window.htm"),
+                parameters: dialogParameters 
+              };
+            sidebar.reveal();
+          }        
+          
+    }();
+
+
+    </script>
+  </head>
+<body >
+
+       
+ <frameset #mainwindow  rows="30dip,*,20dip,75dip">
+        <frame style="border:/*medium*/none double rgb(250,255,255)" >
+
+          <table>
+            <thead>
+              <tr>
+              <th(bedno)>001</th>
+              <th(name)>Mr. Wang</th>
+              <th(age)>adult</th>
+              <th(asist)><img.twinkle #heart src="image/assit.png"/></th>
+              <th(time) #time></th>
+              <th(padding)></th>
+              <th(techerror) style=" background:pink;">NIBP Communication error.</th>
+              <th(healtherror) style=" background:yellow">**HR too low.</th>
+              </tr>
+              
+            </thead>
+          </table>
+        <!--<header .Titlebar role="window-caption">  
+          <table resizeable>
+            <thead>
+              <tr>
+                <th(bedno)><p>001</p></th>
+                <th(name)><p>Mr.Wang</p></th>
+                <th(age)>adult</th>
+                <th(asist)>asist</th>
+                <th(padding)></th>
+                <th(techerror)>NIBP Comunication error.</th>
+                <th(healtherror)>**HR too low.</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><input(selected)|checkbox /></td><td(index)></td><td(caption)></td><td(status)></td></tr>
+            </tbody>
+          </table>
+        </header>-->
+        </frame>    
+        <frame style="border:none double rgb(250,255,255)">
+          <frameset cols="*,*" id="nav_content">
+
+            <frame #htmlcontent style="display:block; overflow:hidden;background-color: black">Content</frame> 
+            
+          </frameset>
+        </frame>
+        <frame style="margin:2px/*border:medium double rgb(250,255,0)*/" >
+            <ul #devstatus >
+              <li #top style="margin-right: 400px"> <a href="#" ><img src="image/top.png"/></a> </li>
+              <li #net > <a href="#" ><img src="image/net.png"/></a> </li>
+              <li #card >  <a href="#" ><img src="image/card.png"/></a> </li>
+              <li #monitor > <a href="#" ><img src="image/monitor.png"/></a> </li>
+              <li #battery >  <a href="#" ><img src="image/battery.png"/></a> </li>
+            </ul>
+        </frame>
+        <frame #buttom style="margin-top:5px;border:none double rgb(255,255,255);">
+            <div#bottombar style="display:block; flow:horizontal;width:*; border:none double rgb(200,255,255);">
+              <div class="carousel">
+              <div.paging><span>&#8226;</span></div>
+              <widget class="list1">
+                <div class="box menu"><a href="#" ><img src="image/mute.png" alt="" /><label>Mute</label></a></div>
+              </widget>
+              <widget class="button prev"   style="border-radius:50px 0 0 50px;background-color:#C1CFDA"/>
+              <widget class="list">
+              <!--
+              <ul id="css3menu2" class="topmenu">
+              <div class="box switch"><label onclick="" forstyle="display:block; flow:horizental;width:*; border:medium double rgb(255,0,255);"="css3menu-switcher"></label></li>
+              <div class="box topfirst"><a href="http://css3menu.com/index.html?utm_source=css3menu_win&utm_medium=program&utm_campaign=free_5.3#help" target="_parent" title="Home" ><img src="CSS3 Menu2.css3prj_files/css3menu2/home.png" alt=""/>HOME</a></div>
+              <div class="box topmenu"><a href="#" ><img src="CSS3 Menu2.css3prj_files/css3menu2/service.png" alt=""/>Member</a></div>
+              <div class="box topmenu"><a href="http://hwww.baidu.com"><img src="CSS3 Menu2.css3prj_files/css3menu2/find.png" alt=""/>Find</a></div>
+              <div class="box topmenu"><a href="#" ><img src="CSS3 Menu2.css3prj_files/css3menu2/samples.png" alt=""/>Setting</a></div>
+              <div class="box toplast"><a href="#" ><img src="CSS3 Menu2.css3prj_files/css3menu2/help.png" alt=""/>Help</a></div>
+              </ul>
+              -->
+                <div class="box home"><a href="#"><img src="image/TimeInterval.png" alt="" /><label>TimeInter.</label></a></div>
+                <div class="box setting"><a href="#" ><img src="image/Start.png" alt=""/><label>NIBPStart</label></a></div>
+                <div class="box member"><a href="#" ><img src="image/Patient.png" alt=""/><label>NewPatient</label></a></div>
+                <div class="box find"><a href="http://hwww.baidu.com"><img src="image/AlarmReview.png" alt=""/><label>AlarmR.</label></a></div>
+                <div class="box help"><a href="#" ><img src="image/BloodReview.png" alt=""/><label>BloodR.</label></a></div>
+                <div class="box setting"><a href="#" ><img src="image/TrendGraph.png" alt=""/><label>TrendG.</label></a></div>
+                <div class="box setting"><a href="#" ><img src="image/TrendTable.png" alt=""/><label>TrendT.</label></a></div>
+               
+                <div class="box help"><a href="#" ><img src="image/TrendMix.png" alt=""/><label>TrendMix</label></a></div>
+                <div class="box help"><a href="#" ><img src="image/HeartAbnormal.png" alt=""/><label>HeartAb.</label></a></div>
+                <div class="box help"><a href="#" ><img src="image/setting.png" alt=""/><label>Setting</label></a></div>
+                </widget>
+                <widget class="button next" style="border-radius:0 50px 50px 0;background-color:#C1CFDA"/>
+                <widget class="padding">
+                <!--This is used for padding-->
+                <div#padding></div>
+                </widget>
+                <widget class="list2">
+                <div class="box2 menu"><a href="#" ><img src="image/Menu.png" alt="" /><label>Menu</label></a></div>
+                <div class="box2 help"><a href="#" ><img src="image/help.png" alt=""/>Guide</a></div>
+                <div class="box2 help"><a href="#" ><img src="image/help.png" alt=""/>Help</a></div>
+                </widget>
+                </div>
+              </div>
+          </div>     
+        </frame>
+
+      </frameset>
+
+
+</body>
+
+</html>
